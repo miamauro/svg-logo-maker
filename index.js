@@ -1,5 +1,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
+const { Circle, Square, Triangle } = require("./lib/shapes");
+// const Svg = require("./lib/svg");
 
 //Array of questions to display to user in command-line.
 inquirer
@@ -27,7 +29,21 @@ inquirer
     },
   ])
   .then((data) => {
-    fs.writeFile("logo.svg", data, (error) => {
-error ? console.log(error) : console.log("Generated logo.svg");
-    });
+    let shape = "";
+    if (data.shape === "circle") {
+      shape = new Circle();
+    } else if (data.shape === "square") {
+      shape = new Square();
+    } else {
+      shape = new Triangle();
+    }
+    shape.setColor(data.shapeColor);
+
+    fs.writeFile(
+      "logo.svg",
+      shape.render(data.textColor, data.text),
+      (error) => {
+        error ? console.log(error) : console.log("Generated logo.svg");
+      }
+    );
   });
