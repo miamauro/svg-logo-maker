@@ -40,7 +40,7 @@ inquirer
     shape.setColor(data.shapeColor);
 
     fs.writeFile(
-      "logo.svg",
+      "./examples/logo.svg",
       shape.render(data.textColor, data.text),
       (error) => {
         error ? console.log(error) : console.log("Generated logo.svg");
