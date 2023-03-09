@@ -13,3 +13,5 @@ node index.js
 ```
 
 Below is a link to a video that will walk you through the necessary steps to generate your logo.
+
+[Demo Video](https://watch.screencastify.com/v/c9vXEPE2KtQjBxAqwKgK)
