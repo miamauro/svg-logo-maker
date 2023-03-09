@@ -1,7 +1,7 @@
+//Import Inquirer, fs, and necessary classes.
 const inquirer = require("inquirer");
 const fs = require("fs");
 const { Circle, Square, Triangle } = require("./lib/shapes");
-// const Svg = require("./lib/svg");
 
 //Array of questions to display to user in command-line.
 inquirer
@@ -28,6 +28,7 @@ inquirer
       message: "Enter a shape color:",
     },
   ])
+  //Create new shape based on user input.
   .then((data) => {
     let shape = "";
     if (data.shape === "circle") {
@@ -37,9 +38,10 @@ inquirer
     } else {
       shape = new Triangle();
     }
+    //Set shape color and text based on user input.
     shape.setColor(data.shapeColor);
     shape.setText(data.text);
-
+    //Generate svg file within examples folder. If unsuccessful, display error; otherwise, display message "Generated logo.svg".
     fs.writeFile(
       "./examples/logo.svg",
       shape.render(data.textColor),
