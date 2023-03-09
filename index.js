@@ -38,10 +38,11 @@ inquirer
       shape = new Triangle();
     }
     shape.setColor(data.shapeColor);
+    shape.setText(data.text);
 
     fs.writeFile(
       "./examples/logo.svg",
-      shape.render(data.textColor, data.text),
+      shape.render(data.textColor),
       (error) => {
         error ? console.log(error) : console.log("Generated logo.svg");
       }
